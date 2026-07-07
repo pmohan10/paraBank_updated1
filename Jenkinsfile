@@ -3,12 +3,14 @@ pipeline {
 
     
     stages {
-        stage('Checkout') {
+        
+         stage('Check Environment') {
             steps {
-                checkout scm
+                bat 'node -v'
+                bat 'npm -v'
             }
         }
-
+        
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
