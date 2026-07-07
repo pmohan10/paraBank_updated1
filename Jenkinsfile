@@ -1,15 +1,21 @@
 pipeline {
     agent any
 
-    
+      environment {
+        PARABANK_URL = 'https://parabank.parasoft.com/parabank/index.htm'
+        PARABANK_USERNAME = 'user19'
+        PARABANK_PASSWORD = 'keepthis'
+    }
+
+
     stages {
         
-         stage('Check Environment') {
-            steps {
-                bat 'node -v'
-                bat 'npm -v'
-            }
-        }
+         stage('Check Environment Variables') {
+    steps {
+        bat 'echo %PARABANK_URL%'
+        bat 'echo %PARABANK_USERNAME%'
+    }
+}
         
         stage('Install Dependencies') {
             steps {
